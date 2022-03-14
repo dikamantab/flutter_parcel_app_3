@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_parcel_app/ui/widgets/my_parcel_size.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../widgets/my_parcel_office.dart';
 import '/src/locations.dart' as locations;
 
 class ParcelCenterScreen extends StatefulWidget {
@@ -64,7 +67,39 @@ class _ParcelCenterScreenState extends State<ParcelCenterScreen> {
                     zoom: 2,
                   ),
                   markers: _markers.values.toSet(),
+                  gestureRecognizers: {
+                    Factory<OneSequenceGestureRecognizer>(
+                      () => EagerGestureRecognizer(),
+                    )
+                  },
                 ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              const MyParcelOffice(
+                parcelOfficeCode: 'NY0924',
+                parcelOfficeName: '985 Meadow St.',
+                parcelOfficeAddress: 'Staten Island, NY 10306',
+                parcelOfficeHours: 'Available 24/7',
+                parcelOfficeStats: 'Fully occupied',
+                parcelOfficeStatsNumber: '1.0',
+              ),
+              const MyParcelOffice(
+                parcelOfficeCode: 'NY0812',
+                parcelOfficeName: '54 West Adams Court',
+                parcelOfficeAddress: 'SRego Park, NY 11374',
+                parcelOfficeHours: 'Available 24/7',
+                parcelOfficeStats: 'Lots of empty space',
+                parcelOfficeStatsNumber: '0.3',
+              ),
+              const MyParcelOffice(
+                parcelOfficeCode: 'NY0812',
+                parcelOfficeName: '54 West Adams Court',
+                parcelOfficeAddress: 'SRego Park, NY 11374',
+                parcelOfficeHours: 'Available 24/7',
+                parcelOfficeStats: 'Lots of empty space',
+                parcelOfficeStatsNumber: '0.3',
               ),
             ],
           ),
